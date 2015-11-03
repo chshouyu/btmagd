@@ -1,0 +1,6 @@
+node_modules/
+*.map
+app/dest/
+*.crx
+*.pem
+build/

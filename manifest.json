@@ -1,0 +1,28 @@
+{
+    "manifest_version": 2,
+    "name": "bt2mag",
+    "version": "0.0.1",
+    "description": "bt2mag下载",
+    "browser_action": {
+        "default_icon": {
+            "19": "icons/icon19.png",
+            "38": "icons/icon38.png"
+        },
+        "default_title": "bt2mag"
+    },
+    "background": {
+        "scripts": ["js/background.js"],
+        "persistent": false
+    },
+    "permissions": [
+        "tabs",
+        "<all_urls>"
+    ],
+    "author": "chenshouyu",
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "js": ["js/content_scripts.js"],
+        "run_at": "document_end",
+        "all_frames": true
+    }]
+}
