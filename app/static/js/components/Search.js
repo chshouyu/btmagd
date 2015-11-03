@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 
 class Search extends Component {
     render () {
+        const { id } = this.props.params;
         return (
-            <div>Search.{this.props.params.id}</div>
+            <div>Search.{id}</div>
         );
     }
 }
