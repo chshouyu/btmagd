@@ -5,10 +5,12 @@ import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import { Provider } from 'react-redux';
 import { ReduxRouter, reduxReactRouter } from 'redux-router';
-import { createHistory } from 'history';
+import { Route, IndexRoute } from 'react-router';
+import createHistory from 'history/lib/createHashHistory';
 import rootReducer from './reducers';
 import App from './components/App';
 import Search from './components/Search';
+import Home from './components/Home';
 
 const middlewares = [
     thunkMiddleware
@@ -28,10 +30,9 @@ const rootElement = document.getElementById('container');
 render(
     <Provider store={store}>
         <ReduxRouter>
-            <Route path="/app/index.html" component={App}>
-                <Route path="search" component={App}>
-                    <Route path=":id" component={Search} />
-                </Route>
+            <Route path="/" component={App}>
+                <IndexRoute component={Home} />
+                <Route path=":id" component={Search} />
             </Route>
         </ReduxRouter>
     </Provider>,
