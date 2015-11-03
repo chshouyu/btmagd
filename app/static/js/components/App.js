@@ -16,20 +16,10 @@ class App extends Component {
         this.props.actions.setName();
     }
 
-    handleClick (path) {
-        const { pushState } = this.props;
-        pushState(null, `/app/index.html/${path}`);
-    }
-
     render () {
         const { name } = this.props;
         return (
-            <div>
-                <div>hello {name}</div>
-                <input type="button" value="search" onClick={this.handleClick.bind(this, 'search')} />
-                <input type="button" value="search/123" onClick={this.handleClick.bind(this, 'search/123')} />
-                {this.props.children}
-            </div>
+            <div>{this.props.children}</div>
         );
     }
 }
