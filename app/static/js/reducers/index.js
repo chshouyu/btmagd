@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { routerStateReducer } from 'redux-router';
 import {
     NAME
 } from '../actions';
@@ -8,7 +9,8 @@ function name(state = 'heihei', action) {
 }
 
 const rootReducer = combineReducers({
-    name
+    name,
+    router: routerStateReducer
 });
 
 export default rootReducer;
