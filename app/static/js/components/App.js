@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as Actions from '../actions';
 import '../../css/normalize.css';
+import '../../css/base.css';
 
 class App extends Component {
 
