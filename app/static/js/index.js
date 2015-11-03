@@ -15,7 +15,7 @@ if (DEBUG) {
     middlewares.push(createLogger());
 }
 
-const createStoreWithMiddleware = applyMiddleware.apply(null, middlewares)(createStore);
+const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 
 const store = createStoreWithMiddleware(rootReducer);
 
