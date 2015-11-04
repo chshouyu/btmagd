@@ -2,7 +2,7 @@
 .search-container {
     min-width: 1000px;
     max-width: 1100px;
-    margin: 40px auto 0;
+    margin: 40px auto 80px;
 }
 
 .search-form {
@@ -16,6 +16,12 @@
 }
 
 .result-wrapper {
-    width: 700px;
+    width: 960px;
     margin: 20px auto 0;
+}
+
+.no-result {
+    text-align: center;
+    font-size: 20px;
+    color: #777;
 }

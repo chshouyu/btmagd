@@ -18,3 +18,7 @@ export function fetch(url) {
         xhr.send(null);
     });
 }
+
+export function slice(likeArray, length) {
+    return Array.prototype.slice.call(likeArray, length);
+}
