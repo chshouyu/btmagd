@@ -64,10 +64,10 @@ class Search extends Component {
             let isLoading = magnetLinkItem && magnetLinkItem.isLoading;
             return (
                 <TableRow key={index}>
-                    <TableRowColumn width="62%">{item.title}</TableRowColumn>
-                    <TableRowColumn>{item.size}</TableRowColumn>
-                    <TableRowColumn>{item.date}</TableRowColumn>
-                    <TableRowColumn>
+                    <TableRowColumn>{item.title}</TableRowColumn>
+                    <TableRowColumn width="12%">{item.size}</TableRowColumn>
+                    <TableRowColumn width="12%">{item.date}</TableRowColumn>
+                    <TableRowColumn width="12%">
                         <FlatButton
                             linkButton={true}
                             href={magnetLink || '##'}
@@ -84,10 +84,10 @@ class Search extends Component {
             <Table selectable={false}>
                 <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                     <TableRow>
-                        <TableHeaderColumn width="62%">名称</TableHeaderColumn>
-                        <TableHeaderColumn>大小</TableHeaderColumn>
-                        <TableHeaderColumn>日期</TableHeaderColumn>
-                        <TableHeaderColumn>操作</TableHeaderColumn>
+                        <TableHeaderColumn>名称</TableHeaderColumn>
+                        <TableHeaderColumn width="12%">大小</TableHeaderColumn>
+                        <TableHeaderColumn width="12%">日期</TableHeaderColumn>
+                        <TableHeaderColumn width="12%">操作</TableHeaderColumn>
                     </TableRow>
                 </TableHeader>
                 <TableBody displayRowCheckbox={false} showRowHover={true}>{listNodes}</TableBody>
