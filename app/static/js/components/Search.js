@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/lib/raised-button';
 import TextField from 'material-ui/lib/text-field';
 import {
@@ -66,4 +67,4 @@ class Search extends Component {
     }
 }
 
-export default Search;
+export default connect(null)(Search);

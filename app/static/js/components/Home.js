@@ -4,9 +4,15 @@ import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
 import RaisedButton from 'material-ui/lib/raised-button';
 import TextField from 'material-ui/lib/text-field';
+import { getLuckWord } from '../actions';
 import '../../css/home.css';
 
 class Home extends Component {
+
+    constructor (props) {
+        super(props);
+        this.getLuckWord = this.getLuckWord.bind(this);
+    }
 
     search (e) {
 
@@ -17,6 +23,15 @@ class Home extends Component {
         if (keyword) {
             pushState(null, `/${keyword}`);
         }
+    }
+
+    getLuckWord () {
+        const { getLuckWord, pushState } = this.props;
+        getLuckWord().then((luckWord) => {
+            if (luckWord) {
+                pushState(null, `/${luckWord}`);
+            }
+        });
     }
 
     render () {
@@ -37,7 +52,7 @@ class Home extends Component {
                     />
                     <div className="btns">
                         <RaisedButton style={btnStyle} label="搜索" onClick={this.search.bind(this)} />
-                        <RaisedButton style={btnStyle} label="手气不错" />
+                        <RaisedButton style={btnStyle} label="手气不错" onClick={this.getLuckWord} />
                     </div>
                 </div>
             </div>
@@ -45,10 +60,18 @@ class Home extends Component {
     }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapStateToProps(state) {
+    const { luckWord } = state;
     return {
-        pushState: bindActionCreators(pushState, dispatch)
+        luckWord
     };
 }
 
-export default connect(null, mapDispatchToProps)(Home);
+function mapDispatchToProps(dispatch) {
+    return {
+        pushState: bindActionCreators(pushState, dispatch),
+        getLuckWord: bindActionCreators(getLuckWord, dispatch)
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
