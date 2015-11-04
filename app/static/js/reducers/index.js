@@ -1,15 +1,10 @@
 import { combineReducers } from 'redux';
 import { routerStateReducer } from 'redux-router';
 import {
-    NAME,
     GET_LUCK_WORD,
     SET_LIST,
     SET_LOADING_STATUS
 } from '../actions';
-
-function name(state = 'heihei', action) {
-    return action.type === NAME ? 'chen' : state;
-}
 
 function luckWord(state = '', action) {
     return action.type === GET_LUCK_WORD ? action.word : state;
@@ -24,7 +19,6 @@ function isLoading(state = false, action) {
 }
 
 const rootReducer = combineReducers({
-    name,
     luckWord,
     list,
     isLoading,

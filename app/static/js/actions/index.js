@@ -1,16 +1,8 @@
 import { fetch, slice } from '../util';
 
-export const NAME = 'NAME';
 export const GET_LUCK_WORD = 'GET_LUCK_WORD';
 export const SET_LIST = 'SET_LIST';
 export const SET_LOADING_STATUS = 'SET_LOADING_STATUS';
-
-export function setName(name) {
-    return {
-        type: NAME,
-        name
-    };
-}
 
 export function setLoadingStatus(status) {
     return {
