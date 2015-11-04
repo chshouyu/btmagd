@@ -19,6 +19,16 @@ import '../../css/search.css';
 
 class Search extends Component {
 
+    componentDidUpdate (prevProps, prevState) {
+        const { params: { id: prevId } } = prevProps;
+        const { doSearch, params: { id: nowId } } = this.props;
+        const keywordField = this.refs.keyword;
+        if (prevId !== nowId) {
+            doSearch(nowId);
+            keywordField.setValue(nowId);
+        }
+    }
+
     componentDidMount () {
         const { doSearch, params: { id } } = this.props;
         id && doSearch(id);
@@ -30,7 +40,6 @@ class Search extends Component {
 
         if (keyword) {
             pushState(null, `/${keyword}`);
-            doSearch(keyword);
         }
     }
 
