@@ -68,7 +68,7 @@ export function doSearch(keyword) {
     return (dispatch, getState) => {
         dispatch(setLoadingStatus(true));
         dispatch(setList([]));
-        dispatch(setMagnetLink(null, null, true));
+        dispatch(setMagnetLink(null, null, true, false));
         return fetch(`http://www.bt2mag.com/search/${encodeURIComponent(keyword)}`).then(function(resp) {
             let list = processListDocument(resp);
             dispatch(setList(list));
@@ -80,19 +80,21 @@ export function doSearch(keyword) {
     };
 }
 
-function setMagnetLink(index, magnetLink, isEmpty) {
+function setMagnetLink(index, magnetLink, isEmpty, isLoading) {
     return {
         type: SET_MAGNET_LINK,
         index,
         magnetLink,
-        isEmpty
+        isEmpty,
+        isLoading
     };
 }
 
 export function getMagnetLink(index, link) {
     return (dispatch, getState) => {
+        dispatch(setMagnetLink(index, null, false, true));
         return fetch(link).then(function(resp) {
-            dispatch(setMagnetLink(index, resp.querySelector('#magnetLink').textContent));
+            dispatch(setMagnetLink(index, resp.querySelector('#magnetLink').textContent, false, false));
         });
     };
 }

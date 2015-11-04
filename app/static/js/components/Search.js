@@ -34,9 +34,9 @@ class Search extends Component {
         }
     }
 
-    getLink (index, link, hasLink, e) {
+    getLink (index, link, hasLink, isLoading, e) {
         e.preventDefault();
-        if (hasLink) return;
+        if (hasLink || isLoading) return;
         const { getMagnetLink } = this.props;
         getMagnetLink(index, link);
     }
@@ -50,7 +50,9 @@ class Search extends Component {
         const { magnetLinks } = this.props;
 
         let listNodes = list.map((item, index) => {
-            let magnetLink = magnetLinks[`${index}`];
+            let magnetLinkItem = magnetLinks[`${index}`];
+            let magnetLink = magnetLinkItem && magnetLinkItem.link;
+            let isLoading = magnetLinkItem && magnetLinkItem.isLoading;
             return (
                 <TableRow key={index}>
                     <TableRowColumn width="62%">{item.title}</TableRowColumn>
@@ -60,8 +62,8 @@ class Search extends Component {
                         <FlatButton
                             linkButton={true}
                             href={magnetLink || '##'}
-                            label={magnetLink ? '右键复制' : '获取链接'}
-                            onClick={this.getLink.bind(this, index, item.link, magnetLink)}
+                            label={isLoading ? '...' : (magnetLink ? '右键复制' : '获取链接')}
+                            onClick={this.getLink.bind(this, index, item.link, magnetLink, isLoading)}
                             secondary={magnetLink ? true : false}
                         />
                     </TableRowColumn>

@@ -24,9 +24,12 @@ function magnetLinks(state = {}, action) {
         if (action.isEmpty) {
             return {};
         }
-        return Object.assign({}, {
-            [`${action.index}`]: action.magnetLink
-        }, state);
+        return Object.assign({}, state, {
+            [`${action.index}`]: {
+                link: action.magnetLink,
+                isLoading: action.isLoading
+            }
+        });
     }
     return state;
 }
