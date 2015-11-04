@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
 import RaisedButton from 'material-ui/lib/raised-button';
+import FlatButton from 'material-ui/lib/flat-button';
 import TextField from 'material-ui/lib/text-field';
 import CircularProgress from 'material-ui/lib/circular-progress';
 import {
@@ -13,7 +14,7 @@ import {
     TableRowColumn,
     TableHeaderColumn
 } from 'material-ui/lib/table';
-import { doSearch } from '../actions';
+import { doSearch, getMagnetLink } from '../actions';
 import '../../css/search.css';
 
 class Search extends Component {
@@ -33,18 +34,37 @@ class Search extends Component {
         }
     }
 
+    getLink (index, link, hasLink, e) {
+        e.preventDefault();
+        if (hasLink) return;
+        const { getMagnetLink } = this.props;
+        getMagnetLink(index, link);
+    }
+
     renderTable (list) {
 
         if (!list || !list.length) {
             return null;
         }
 
+        const { magnetLinks } = this.props;
+
         let listNodes = list.map((item, index) => {
+            let magnetLink = magnetLinks[`${index}`];
             return (
                 <TableRow key={index}>
-                    <TableRowColumn width="70%">{item.title}</TableRowColumn>
+                    <TableRowColumn width="62%">{item.title}</TableRowColumn>
                     <TableRowColumn>{item.size}</TableRowColumn>
                     <TableRowColumn>{item.date}</TableRowColumn>
+                    <TableRowColumn>
+                        <FlatButton
+                            linkButton={true}
+                            href={magnetLink || '##'}
+                            label={magnetLink ? '右键复制' : '获取链接'}
+                            onClick={this.getLink.bind(this, index, item.link, magnetLink)}
+                            secondary={magnetLink ? true : false}
+                        />
+                    </TableRowColumn>
                 </TableRow>
             );
         });
@@ -53,9 +73,10 @@ class Search extends Component {
             <Table selectable={false}>
                 <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                     <TableRow>
-                        <TableHeaderColumn width="70%">名称</TableHeaderColumn>
+                        <TableHeaderColumn width="62%">名称</TableHeaderColumn>
                         <TableHeaderColumn>大小</TableHeaderColumn>
                         <TableHeaderColumn>日期</TableHeaderColumn>
+                        <TableHeaderColumn>操作</TableHeaderColumn>
                     </TableRow>
                 </TableHeader>
                 <TableBody displayRowCheckbox={false} showRowHover={true}>{listNodes}</TableBody>
@@ -113,17 +134,19 @@ class Search extends Component {
 }
 
 function mapStateToProps(state) {
-    const { list, isLoading } = state;
+    const { list, isLoading, magnetLinks } = state;
     return {
         list,
-        isLoading
+        isLoading,
+        magnetLinks
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         pushState: bindActionCreators(pushState, dispatch),
-        doSearch: bindActionCreators(doSearch, dispatch)
+        doSearch: bindActionCreators(doSearch, dispatch),
+        getMagnetLink: bindActionCreators(getMagnetLink, dispatch)
     };
 }
 

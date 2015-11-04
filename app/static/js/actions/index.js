@@ -3,6 +3,7 @@ import { fetch, slice } from '../util';
 export const GET_LUCK_WORD = 'GET_LUCK_WORD';
 export const SET_LIST = 'SET_LIST';
 export const SET_LOADING_STATUS = 'SET_LOADING_STATUS';
+export const SET_MAGNET_LINK = 'SET_MAGNET_LINK';
 
 export function setLoadingStatus(status) {
     return {
@@ -67,6 +68,7 @@ export function doSearch(keyword) {
     return (dispatch, getState) => {
         dispatch(setLoadingStatus(true));
         dispatch(setList([]));
+        dispatch(setMagnetLink(null, null, true));
         return fetch(`http://www.bt2mag.com/search/${encodeURIComponent(keyword)}`).then(function(resp) {
             let list = processListDocument(resp);
             dispatch(setList(list));
@@ -78,5 +80,21 @@ export function doSearch(keyword) {
     };
 }
 
+function setMagnetLink(index, magnetLink, isEmpty) {
+    return {
+        type: SET_MAGNET_LINK,
+        index,
+        magnetLink,
+        isEmpty
+    };
+}
+
+export function getMagnetLink(index, link) {
+    return (dispatch, getState) => {
+        return fetch(link).then(function(resp) {
+            dispatch(setMagnetLink(index, resp.querySelector('#magnetLink').textContent));
+        });
+    };
+}
 
 
