@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import RaisedButton from 'material-ui/lib/raised-button';
 import TextField from 'material-ui/lib/text-field';
-import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/lib/table';
+import {
+    Table,
+    TableRow,
+    TableBody,
+    TableHeader,
+    TableRowColumn,
+    TableHeaderColumn
+} from 'material-ui/lib/table';
 import '../../css/search.css';
 
 class Search extends Component {
