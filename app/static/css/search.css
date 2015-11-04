@@ -1,0 +1,21 @@
+
+.search-container {
+    min-width: 1000px;
+    max-width: 1100px;
+    margin: 40px auto 0;
+}
+
+.search-form {
+    width: 700px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.keyword {
+    flex: 1;
+}
+
+.result-wrapper {
+    width: 700px;
+    margin: 20px auto 0;
+}
