@@ -9,10 +9,9 @@ import '../../css/home.css';
 class Home extends Component {
 
     search (e) {
-        e.preventDefault();
 
         let keyword = this.refs.keyword.getValue().trim();
-        
+
         const { pushState } = this.props;
         
         if (keyword) {
