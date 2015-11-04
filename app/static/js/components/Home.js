@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
+import RaisedButton from 'material-ui/lib/raised-button';
+import TextField from 'material-ui/lib/text-field';
+import '../../css/home.css';
 
 class Home extends Component {
 
     search (e) {
         e.preventDefault();
 
-        let keyword = this.refs.keyword.value.trim();
+        let keyword = this.refs.keyword.getValue().trim();
+        
         const { pushState } = this.props;
         
         if (keyword) {
@@ -17,12 +21,24 @@ class Home extends Component {
     }
 
     render () {
+
+        let btnStyle = {
+            margin: '0 20px',
+            width: '110px'
+        };
+
         return (
             <div className="index-wrapper">
                 <div className="index-form">
-                    <input type="text" ref="keyword" />
+                    <TextField
+                        ref="keyword"
+                        fullWidth={true}
+                        onEnterKeyDown={this.search.bind(this)}
+                        inputStyle={{fontSize: '20px'}}
+                    />
                     <div className="btns">
-                        <input type="button" value="搜索" onClick={this.search.bind(this)} />
+                        <RaisedButton style={btnStyle} label="搜索" onClick={this.search.bind(this)} />
+                        <RaisedButton style={btnStyle} label="手气不错" />
                     </div>
                 </div>
             </div>
