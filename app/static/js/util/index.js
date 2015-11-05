@@ -13,7 +13,12 @@ export function fetch(url) {
         xhr.onerror = function() {
             reject('http_request_error');
         };
+
+        xhr.ontimeout = function() {
+            reject('timeout_error');
+        };
         xhr.responseType = 'document';
+        xhr.timeout = 3000;
         xhr.open('GET', url, true);
         xhr.send(null);
     });
