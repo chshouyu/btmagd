@@ -19,11 +19,5 @@
         "<all_urls>",
         "contextMenus"
     ],
-    "author": "chenshouyu",
-    "content_scripts": [{
-        "matches": ["<all_urls>"],
-        "js": ["js/content_scripts.js"],
-        "run_at": "document_end",
-        "all_frames": true
-    }]
+    "author": "chenshouyu"
 }
