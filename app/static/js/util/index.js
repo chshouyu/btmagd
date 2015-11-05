@@ -18,7 +18,7 @@ export function fetch(url) {
             reject('timeout_error');
         };
         xhr.responseType = 'document';
-        xhr.timeout = 3000;
+        xhr.timeout = 5000;
         xhr.open('GET', url, true);
         xhr.send(null);
     });

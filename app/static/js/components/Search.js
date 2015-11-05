@@ -101,9 +101,15 @@ class Search extends Component {
         );
     }
 
+    renderTimeoutError () {
+        return (
+            <div className="error-msg timeout-error">请求超时，请确认<a target="_blank" href="http://www.bt2mag.com">http://www.bt2mag.com</a>能在您的浏览器中正常访问</div>
+        );
+    }
+
     render () {
 
-        const { list, params: { id }, isLoading } = this.props;
+        const { list, params: { id }, isLoading, errorStatus } = this.props;
 
         let btnStyle = {
             margin: '4px 0 0 10px'
@@ -135,8 +141,11 @@ class Search extends Component {
                     {!isLoading && list.length > 0 &&
                         this.renderTable(list)
                     }
-                    {!isLoading && list.length === 0 &&
+                    {!isLoading && !errorStatus.errType && list.length === 0 &&
                         this.renderEmpty()
+                    }
+                    {!isLoading && errorStatus.errType && errorStatus.errType === 'timeout_error' &&
+                        this.renderTimeoutError()
                     }
                 </div>
             </div>
@@ -145,11 +154,12 @@ class Search extends Component {
 }
 
 function mapStateToProps(state) {
-    const { list, isLoading, magnetLinks } = state;
+    const { list, isLoading, magnetLinks, errorStatus } = state;
     return {
         list,
         isLoading,
-        magnetLinks
+        magnetLinks,
+        errorStatus
     };
 }
 

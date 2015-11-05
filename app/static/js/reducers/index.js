@@ -4,7 +4,8 @@ import {
     GET_LUCK_WORD,
     SET_LIST,
     SET_LOADING_STATUS,
-    SET_MAGNET_LINK
+    SET_MAGNET_LINK,
+    SET_ERROR_STATUS
 } from '../actions';
 
 function luckWord(state = '', action) {
@@ -34,11 +35,19 @@ function magnetLinks(state = {}, action) {
     return state;
 }
 
+function errorStatus(state = {}, action) {
+    return action.type === SET_ERROR_STATUS ? Object.assign({}, state, {
+        errType: action.errType,
+        message: action.message
+    }) : state;
+}
+
 const rootReducer = combineReducers({
     luckWord,
     list,
     isLoading,
     magnetLinks,
+    errorStatus,
     router: routerStateReducer
 });
 

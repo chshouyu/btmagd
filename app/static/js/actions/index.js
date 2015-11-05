@@ -4,6 +4,7 @@ export const GET_LUCK_WORD = 'GET_LUCK_WORD';
 export const SET_LIST = 'SET_LIST';
 export const SET_LOADING_STATUS = 'SET_LOADING_STATUS';
 export const SET_MAGNET_LINK = 'SET_MAGNET_LINK';
+export const SET_ERROR_STATUS = 'SET_ERROR_STATUS';
 
 export function setLoadingStatus(status) {
     return {
@@ -73,8 +74,17 @@ export function doSearch(keyword) {
             let list = processListDocument(resp);
             dispatch(setList(list));
             dispatch(setLoadingStatus(false));
+            dispatch(setErrorStatus({
+                errType: ''
+            }));
             return list;
-        }, function(error) {
+        }, function(errorMsg) {
+            if (errorMsg === 'timeout_error') {
+                dispatch(setErrorStatus({
+                    errType: errorMsg,
+                    message: '请求超时'
+                }));
+            }
             dispatch(setLoadingStatus(false));
         });
     };
@@ -96,6 +106,14 @@ export function getMagnetLink(index, link) {
         return fetch(link).then(function(resp) {
             dispatch(setMagnetLink(index, resp.querySelector('#magnetLink').textContent, false, false));
         });
+    };
+}
+
+export function setErrorStatus({errType, message}) {
+    return {
+        type: SET_ERROR_STATUS,
+        errType,
+        message
     };
 }
 
