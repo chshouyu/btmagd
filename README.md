@@ -2,7 +2,9 @@
 
 更方便地使用[bt2mag](http://www.bt2mag.com)搜索资源
 
-由于国内网络环境限制（你懂得），请先确认能在浏览器中正常打开[http://www.bt2mag.com](http://www.bt2mag.com)再使用本插件，如不能，请添加相应的代理规则
+## 使用须知
+
+由于国内网络环境限制（你懂得），**请先确认能在浏览器中正常打开[http://www.bt2mag.com](http://www.bt2mag.com)再使用本插件**，如不能，请添加相应的代理规则
 
 ## 改进
 
