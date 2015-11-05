@@ -6,12 +6,12 @@ export function fetch(url) {
             if (this.status === 200 || this.status === 304) {
                 resolve(this.response);
             } else {
-                reject('status error');
+                reject('status_error');
             }
         };
 
         xhr.onerror = function() {
-            reject('http request error');
+            reject('http_request_error');
         };
         xhr.responseType = 'document';
         xhr.open('GET', url, true);
