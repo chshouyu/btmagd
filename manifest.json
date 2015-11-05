@@ -16,7 +16,8 @@
     },
     "permissions": [
         "tabs",
-        "<all_urls>"
+        "<all_urls>",
+        "contextMenus"
     ],
     "author": "chenshouyu",
     "content_scripts": [{
