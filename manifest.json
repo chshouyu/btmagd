@@ -16,7 +16,7 @@
     },
     "permissions": [
         "tabs",
-        "<all_urls>",
+        "*://*.bt2mag.com/*",
         "contextMenus"
     ],
     "author": "chenshouyu"
