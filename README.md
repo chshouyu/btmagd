@@ -18,3 +18,9 @@
 1. 前往[本页面](https://github.com/chshouyu/good-bt2mag/releases)下载最新的zip安装包，解压得到.crx文件
 2. 在Chrome浏览器中打开 菜单 -> 更多工具 -> 扩展程序 页面
 3. 将.crx文件拖拽到页面，确认安装即可使用
+
+## 预览
+
+![image](https://cloud.githubusercontent.com/assets/1304342/10966480/cd35cccc-83ee-11e5-8512-e3fdaa19b9d6.png)
+
+![image](https://cloud.githubusercontent.com/assets/1304342/10966499/ed73efa0-83ee-11e5-8240-543fb7eb33ce.png)
