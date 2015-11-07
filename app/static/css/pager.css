@@ -27,3 +27,8 @@
 .pager ul li.curr a {
     color: #00BCD4;
 }
+
+.pager ul li.prev-page a,
+.pager ul li.next-page a {
+    width: 60px;
+}

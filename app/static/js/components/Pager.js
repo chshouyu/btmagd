@@ -21,7 +21,19 @@ class Pager extends Component {
         });
         return (
             <div className="pager">
-                <ul>{pagerNodes}</ul>
+                <ul>
+                    {+currPage > +pager[0] &&
+                        <li className="prev-page">
+                            <a href="#" onClick={this.handleClick.bind(this, +currPage - 1)}>上一页</a>
+                        </li>
+                    }
+                    {pagerNodes}
+                    {+currPage < +pager[pager.length - 1] &&
+                        <li className="next-page">
+                            <a href="#" onClick={this.handleClick.bind(this, +currPage + 1)}>下一页</a>
+                        </li>
+                    }
+                </ul>
             </div>
         );
     }
