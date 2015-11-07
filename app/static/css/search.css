@@ -21,6 +21,11 @@
     margin: 20px auto 0;
 }
 
+.result-table tbody .title em {
+    color: #FF2929;
+    font-style: normal;
+}
+
 .no-result {
     text-align: center;
     font-size: 20px;

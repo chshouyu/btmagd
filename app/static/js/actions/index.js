@@ -39,7 +39,7 @@ function processWordDocument(respDocument) {
 function processRow(row) {
     let linkNode = row.querySelector('a');
     let link = linkNode.href;
-    let title = linkNode.title;
+    let title = linkNode.querySelector('.file').innerHTML;
     let size = row.querySelector('.size').textContent;
     let date = row.querySelector('.date').textContent;
     return {

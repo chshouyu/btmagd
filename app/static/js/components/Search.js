@@ -70,7 +70,7 @@ class Search extends Component {
             let isLoading = magnetLinkItem && magnetLinkItem.isLoading;
             return (
                 <TableRow key={index}>
-                    <TableRowColumn>{item.title}</TableRowColumn>
+                    <TableRowColumn dangerouslySetInnerHTML={{__html: item.title}} className="title"></TableRowColumn>
                     <TableRowColumn width="12%">{item.size}</TableRowColumn>
                     <TableRowColumn width="12%">{item.date}</TableRowColumn>
                     <TableRowColumn width="12%">
@@ -87,7 +87,7 @@ class Search extends Component {
         });
 
         return (
-            <Table selectable={false}>
+            <Table className="result-table" selectable={false}>
                 <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                     <TableRow>
                         <TableHeaderColumn>名称</TableHeaderColumn>
