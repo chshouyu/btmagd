@@ -5,6 +5,7 @@ export const SET_LIST = 'SET_LIST';
 export const SET_LOADING_STATUS = 'SET_LOADING_STATUS';
 export const SET_MAGNET_LINK = 'SET_MAGNET_LINK';
 export const SET_ERROR_STATUS = 'SET_ERROR_STATUS';
+export const GET_PAGER = 'GET_PAGER';
 
 export function setLoadingStatus(status) {
     return {
@@ -55,6 +56,14 @@ function processListDocument(respDocument) {
     return list;
 }
 
+function processPager(respDocument) {
+    let paginationNode = respDocument.querySelector('.pagination');
+    if (!paginationNode) {
+        return [];
+    }
+    return slice(paginationNode.querySelectorAll('li a')).map((aNode) => aNode.textContent).filter((text) => /^\d+$/.test(text));
+}
+
 export function getLuckWord() {
     return (dispatch, getState) => {
         return fetch(`http://www.bt2mag.com/search`).then(function(resp) {
@@ -65,14 +74,16 @@ export function getLuckWord() {
     };
 }
 
-export function doSearch(keyword) {
+export function doSearch(keyword, page = 1) {
     return (dispatch, getState) => {
         dispatch(setLoadingStatus(true));
         dispatch(setList([]));
         dispatch(setMagnetLink(null, null, true, false));
-        return fetch(`http://www.bt2mag.com/search/${encodeURIComponent(keyword)}`).then(function(resp) {
+        return fetch(`http://www.bt2mag.com/search/${encodeURIComponent(keyword)}/currentPage/${page}`).then(function(resp) {
             let list = processListDocument(resp);
+            let pager = processPager(resp);
             dispatch(setList(list));
+            dispatch(setPager(pager));
             dispatch(setLoadingStatus(false));
             dispatch(setErrorStatus({
                 errType: ''
@@ -117,4 +128,9 @@ export function setErrorStatus({errType, message}) {
     };
 }
 
-
+function setPager(pager) {
+    return {
+        type: GET_PAGER,
+        pager
+    };
+}

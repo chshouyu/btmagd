@@ -5,7 +5,8 @@ import {
     SET_LIST,
     SET_LOADING_STATUS,
     SET_MAGNET_LINK,
-    SET_ERROR_STATUS
+    SET_ERROR_STATUS,
+    GET_PAGER
 } from '../actions';
 
 function luckWord(state = '', action) {
@@ -42,12 +43,17 @@ function errorStatus(state = {}, action) {
     }) : state;
 }
 
+function pager(state = [], action) {
+    return action.type === GET_PAGER ? [...action.pager] : state;
+}
+
 const rootReducer = combineReducers({
     luckWord,
     list,
     isLoading,
     magnetLinks,
     errorStatus,
+    pager,
     router: routerStateReducer
 });
 

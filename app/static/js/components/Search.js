@@ -15,23 +15,24 @@ import {
     TableHeaderColumn
 } from 'material-ui/lib/table';
 import { doSearch, getMagnetLink } from '../actions';
+import Pager from './Pager';
 import '../../css/search.css';
 
 class Search extends Component {
 
     componentDidUpdate (prevProps, prevState) {
-        const { params: { id: prevId } } = prevProps;
-        const { doSearch, params: { id: nowId } } = this.props;
+        const { params: { id: prevId, page: prevPage } } = prevProps;
+        const { doSearch, params: { id: nowId, page: nowPage } } = this.props;
         const keywordField = this.refs.keyword;
-        if (prevId !== nowId) {
-            doSearch(nowId);
+        if (prevId !== nowId || prevPage !== nowPage) {
+            doSearch(nowId, nowPage);
             keywordField.setValue(nowId);
         }
     }
 
     componentDidMount () {
-        const { doSearch, params: { id } } = this.props;
-        id && doSearch(id);
+        const { doSearch, params: { id, page } } = this.props;
+        id && doSearch(id, page);
     }
 
     search () {
@@ -48,6 +49,11 @@ class Search extends Component {
         if (hasLink || isLoading) return;
         const { getMagnetLink } = this.props;
         getMagnetLink(index, link);
+    }
+
+    handlePageClick (page) {
+        const { pushState, params: { id } } = this.props;
+        pushState(null, `/${id}/${page}`);
     }
 
     renderTable (list) {
@@ -109,7 +115,7 @@ class Search extends Component {
 
     render () {
 
-        const { list, params: { id }, isLoading, errorStatus } = this.props;
+        const { list, params: { id, page }, isLoading, errorStatus, pager } = this.props;
 
         let btnStyle = {
             margin: '4px 0 0 10px'
@@ -147,6 +153,13 @@ class Search extends Component {
                     {!isLoading && errorStatus.errType && errorStatus.errType === 'timeout_error' &&
                         this.renderTimeoutError()
                     }
+                    {!isLoading && pager.length > 0 &&
+                        <Pager
+                            pager={pager}
+                            currPage={page || 1}
+                            onPageClick={this.handlePageClick.bind(this)}
+                        />
+                    }
                 </div>
             </div>
         );
@@ -154,12 +167,13 @@ class Search extends Component {
 }
 
 function mapStateToProps(state) {
-    const { list, isLoading, magnetLinks, errorStatus } = state;
+    const { list, isLoading, magnetLinks, errorStatus, pager } = state;
     return {
         list,
         isLoading,
         magnetLinks,
-        errorStatus
+        errorStatus,
+        pager
     };
 }
 

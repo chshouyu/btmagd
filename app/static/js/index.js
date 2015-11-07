@@ -32,7 +32,7 @@ render(
         <ReduxRouter>
             <Route path="/" component={App}>
                 <IndexRoute component={Home} />
-                <Route path=":id" component={Search} />
+                <Route path=":id(/:page)" component={Search} />
             </Route>
         </ReduxRouter>
     </Provider>,
