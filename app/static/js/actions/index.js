@@ -96,6 +96,7 @@ export function doSearch(keyword, page = 1) {
                     message: '请求超时'
                 }));
             }
+            dispatch(setPager([]));
             dispatch(setLoadingStatus(false));
         });
     };
