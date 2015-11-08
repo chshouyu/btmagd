@@ -29,7 +29,8 @@ function magnetLinks(state = {}, action) {
         return Object.assign({}, state, {
             [`${action.index}`]: {
                 link: action.magnetLink,
-                isLoading: action.isLoading
+                isLoading: action.isLoading,
+                isError: action.isError
             }
         });
     }

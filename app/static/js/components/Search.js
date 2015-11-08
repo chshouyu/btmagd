@@ -70,6 +70,7 @@ class Search extends Component {
             let magnetLinkItem = magnetLinks[`${index}`];
             let magnetLink = magnetLinkItem && magnetLinkItem.link;
             let isLoading = magnetLinkItem && magnetLinkItem.isLoading;
+            let isError = magnetLinkItem && magnetLinkItem.isError;
             return (
                 <TableRow key={index}>
                     <TableRowColumn dangerouslySetInnerHTML={{__html: item.title}} className="title"></TableRowColumn>
@@ -79,9 +80,10 @@ class Search extends Component {
                         <FlatButton
                             linkButton={true}
                             href={magnetLink || '##'}
-                            label={isLoading ? '...' : (magnetLink ? '右键复制' : '获取链接')}
+                            label={isLoading ? '...' : (isError ? '重试' : (magnetLink ? '右键复制' : '获取链接'))}
                             onClick={this.getLink.bind(this, index, item.link, magnetLink, isLoading)}
                             secondary={magnetLink ? true : false}
+                            style={{textAlign: 'center'}}
                         />
                     </TableRowColumn>
                 </TableRow>
