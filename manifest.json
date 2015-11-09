@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "bt2mag",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "description": "bt2mag下载",
     "browser_action": {
         "default_icon": {
