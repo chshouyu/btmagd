@@ -6,6 +6,7 @@ import {
     EMPTY_LIST,
     SET_LOADING_STATUS,
     SET_MAGNET_LINK,
+    EMPTY_MAGNET_LINK,
     SET_ERROR_STATUS,
     GET_PAGER
 } from '../actions';
@@ -30,19 +31,20 @@ function isLoading(state = false, action) {
 }
 
 function magnetLinks(state = {}, action) {
-    if (action.type === SET_MAGNET_LINK) {
-        if (action.isEmpty) {
+    switch (action.type) {
+        case EMPTY_MAGNET_LINK:
             return {};
-        }
-        return Object.assign({}, state, {
-            [`${action.index}`]: {
-                link: action.magnetLink,
-                isLoading: action.isLoading,
-                isError: action.isError
-            }
-        });
+        case SET_MAGNET_LINK:
+            return Object.assign({}, state, {
+                [`${action.index}`]: {
+                    link: action.magnetLink,
+                    isLoading: action.isLoading,
+                    isError: action.isError
+                }
+            });
+        default:
+            return state;
     }
-    return state;
 }
 
 function errorStatus(state = {}, action) {
