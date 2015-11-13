@@ -53,7 +53,7 @@ class Search extends Component {
         getMagnetLink(index, link);
     }
 
-    getLuckWord () {
+    doGetLuckWord () {
         const { getLuckWord, pushState } = this.props;
         getLuckWord().then((luckWord) => {
             if (luckWord) {
@@ -152,7 +152,7 @@ class Search extends Component {
                         defaultValue={id}
                     />
                     <RaisedButton style={btnStyle} label="搜索" onClick={this.search.bind(this)} />
-                    <RaisedButton style={btnStyle} label="手气不错" onClick={this.getLuckWord.bind(this)} />
+                    <RaisedButton style={btnStyle} label="手气不错" onClick={this.doGetLuckWord.bind(this)} />
                 </div>
                 <div className="result-wrapper">
                     {isLoading &&

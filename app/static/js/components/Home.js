@@ -11,7 +11,7 @@ class Home extends Component {
 
     constructor (props) {
         super(props);
-        this.getLuckWord = this.getLuckWord.bind(this);
+        this.doGetLuckWord = this.doGetLuckWord.bind(this);
     }
 
     search (e) {
@@ -25,7 +25,7 @@ class Home extends Component {
         }
     }
 
-    getLuckWord () {
+    doGetLuckWord () {
         const { getLuckWord, pushState } = this.props;
         getLuckWord().then((luckWord) => {
             if (luckWord) {
@@ -52,7 +52,7 @@ class Home extends Component {
                     />
                     <div className="btns">
                         <RaisedButton style={btnStyle} label="搜索" onClick={this.search.bind(this)} />
-                        <RaisedButton style={btnStyle} label="手气不错" onClick={this.getLuckWord} />
+                        <RaisedButton style={btnStyle} label="手气不错" onClick={this.doGetLuckWord} />
                     </div>
                 </div>
             </div>
