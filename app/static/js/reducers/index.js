@@ -8,7 +8,7 @@ import {
     SET_MAGNET_LINK,
     EMPTY_MAGNET_LINK,
     SET_ERROR_STATUS,
-    GET_PAGER
+    SET_PAGER
 } from '../actions';
 
 function luckWord(state = '', action) {
@@ -55,7 +55,7 @@ function errorStatus(state = {}, action) {
 }
 
 function pager(state = [], action) {
-    return action.type === GET_PAGER ? [...action.pager] : state;
+    return action.type === SET_PAGER ? [...action.pager] : state;
 }
 
 const rootReducer = combineReducers({

@@ -7,7 +7,7 @@ export const SET_LOADING_STATUS = 'SET_LOADING_STATUS';
 export const SET_MAGNET_LINK = 'SET_MAGNET_LINK';
 export const EMPTY_MAGNET_LINK = 'EMPTY_MAGNET_LINK';
 export const SET_ERROR_STATUS = 'SET_ERROR_STATUS';
-export const GET_PAGER = 'GET_PAGER';
+export const SET_PAGER = 'SET_PAGER';
 
 export function setLoadingStatus(status) {
     return {
@@ -156,7 +156,7 @@ export function setErrorStatus({errType, message}) {
 
 function setPager(pager) {
     return {
-        type: GET_PAGER,
+        type: SET_PAGER,
         pager
     };
 }
