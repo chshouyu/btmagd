@@ -2,6 +2,7 @@ import { fetch, slice } from '../util';
 
 export const GET_LUCK_WORD = 'GET_LUCK_WORD';
 export const SET_LIST = 'SET_LIST';
+export const EMPTY_LIST = 'EMPTY_LIST';
 export const SET_LOADING_STATUS = 'SET_LOADING_STATUS';
 export const SET_MAGNET_LINK = 'SET_MAGNET_LINK';
 export const SET_ERROR_STATUS = 'SET_ERROR_STATUS';
@@ -25,6 +26,12 @@ function setList(list) {
     return {
         type: SET_LIST,
         list
+    };
+}
+
+function emptyList() {
+    return {
+        type: EMPTY_LIST
     };
 }
 
@@ -77,10 +84,10 @@ export function getLuckWord() {
 export function doSearch(keyword, page = 1) {
     return (dispatch, getState) => {
         dispatch(setLoadingStatus(true));
-        dispatch(setList([]));
         dispatch(setMagnetLink({
             isEmpty: true
         }));
+        dispatch(emptyList());
         return fetch(`http://www.bt2mag.com/search/${encodeURIComponent(keyword)}/currentPage/${page}`).then(function(resp) {
             let list = processListDocument(resp);
             let pager = processPager(resp);

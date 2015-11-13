@@ -3,6 +3,7 @@ import { routerStateReducer } from 'redux-router';
 import {
     GET_LUCK_WORD,
     SET_LIST,
+    EMPTY_LIST,
     SET_LOADING_STATUS,
     SET_MAGNET_LINK,
     SET_ERROR_STATUS,
@@ -14,7 +15,14 @@ function luckWord(state = '', action) {
 }
 
 function list(state = [], action) {
-    return action.type === SET_LIST ? [...action.list] : state;
+    switch (action.type) {
+        case SET_LIST:
+            return [...action.list];
+        case EMPTY_LIST:
+            return [];
+        default:
+            return state;
+    }
 }
 
 function isLoading(state = false, action) {
