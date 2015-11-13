@@ -48,8 +48,7 @@ class Home extends Component {
                         ref="keyword"
                         fullWidth={true}
                         onEnterKeyDown={this.search.bind(this)}
-                        inputStyle={{fontSize: '20px'}}
-                    />
+                        inputStyle={{fontSize: '20px'}} />
                     <div className="btns">
                         <RaisedButton style={btnStyle} label="搜索" onClick={this.search.bind(this)} />
                         <RaisedButton style={btnStyle} label="手气不错" onClick={this.doGetLuckWord} />

@@ -92,8 +92,7 @@ class Search extends Component {
                             label={isLoading ? '...' : (isError ? '重试' : (magnetLink ? '右键复制' : '获取链接'))}
                             onClick={this.getLink.bind(this, index, item.link, magnetLink, isLoading)}
                             secondary={magnetLink ? true : false}
-                            style={{textAlign: 'center'}}
-                        />
+                            style={{textAlign: 'center'}} />
                     </TableRowColumn>
                 </TableRow>
             );
@@ -149,8 +148,7 @@ class Search extends Component {
                         fullWidth={true}
                         onEnterKeyDown={this.search.bind(this)}
                         inputStyle={{fontSize: '20px'}}
-                        defaultValue={id}
-                    />
+                        defaultValue={id} />
                     <RaisedButton style={btnStyle} label="搜索" onClick={this.search.bind(this)} />
                     <RaisedButton style={btnStyle} label="手气不错" onClick={this.doGetLuckWord.bind(this)} />
                 </div>
@@ -171,8 +169,7 @@ class Search extends Component {
                         <Pager
                             pager={pager}
                             currPage={page || 1}
-                            onPageClick={this.handlePageClick.bind(this)}
-                        />
+                            onPageClick={this.handlePageClick.bind(this)} />
                     }
                 </div>
             </div>
