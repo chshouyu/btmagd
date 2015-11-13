@@ -98,12 +98,10 @@ export function doSearch(keyword, page = 1) {
             }));
             return list;
         }, function(errorMsg) {
-            if (errorMsg === 'timeout_error') {
-                dispatch(setErrorStatus({
-                    errType: errorMsg,
-                    message: '请求超时'
-                }));
-            }
+            dispatch(setErrorStatus({
+                errType: errorMsg,
+                message: '请求超时'
+            }));
             dispatch(setPager([]));
             dispatch(setLoadingStatus(false));
         });
