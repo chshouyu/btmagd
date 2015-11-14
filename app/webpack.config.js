@@ -18,11 +18,7 @@ module.exports = {
         loaders: [{
             test: /\.(js|jsx)?$/,
             exclude: /(node_modules|bower_components)/,
-            loader: 'babel-loader',
-            query: {
-                presets: ['es2015', 'react'],
-                cacheDirectory: true
-            }
+            loaders: ['babel-loader?presets[]=es2015,presets[]=react&+cacheDirectory']
         }, {
             test: /\.css$/,
             loader: 'style-loader!css-loader'
