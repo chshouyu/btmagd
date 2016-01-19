@@ -15,6 +15,12 @@
 
 ## 安装
 
+### 方式1
+
+[Chrome网上应用店](https://chrome.google.com/webstore/detail/bt2mag/mbkbpijebbclkfpgghmklejihnpmdphf)
+
+### 方式2
+
 1. 前往[此页面](https://github.com/chshouyu/good-bt2mag/releases)下载最新的zip安装包，解压得到.crx文件
 2. 在Chrome浏览器中打开 菜单 -> 更多工具 -> 扩展程序 页面
 3. 将.crx文件拖拽到页面，确认安装即可使用
