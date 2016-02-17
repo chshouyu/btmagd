@@ -1,10 +1,10 @@
-# good-bt2mag
+# btmagd
 
-更方便地使用[bt2mag](http://www.bt2mag.com)搜索资源
+更方便地使用bt搜索资源
 
 ## 使用须知
 
-由于国内网络环境限制（你懂得），**请先确认能在浏览器中正常打开[http://www.bt2mag.com](http://www.bt2mag.com)再使用本插件**，如不能，请添加相应的代理规则
+由于国内网络环境限制（你懂得），**请先确认能在浏览器中正常打开[http://www.btaia.com](http://www.btaia.com)再使用本插件**，如不能，请添加相应的代理规则
 
 ## 改进
 
@@ -21,7 +21,7 @@
 
 ### 方式2
 
-1. 前往[此页面](https://github.com/chshouyu/good-bt2mag/releases)下载最新的zip安装包，解压得到.crx文件
+1. 前往[此页面](https://github.com/chshouyu/btmagd/releases)下载最新的zip安装包，解压得到.crx文件
 2. 在Chrome浏览器中打开 菜单 -> 更多工具 -> 扩展程序 页面
 3. 将.crx文件拖拽到页面，确认安装即可使用
 
