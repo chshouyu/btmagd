@@ -12,7 +12,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 
 chrome.contextMenus.onClicked.addListener(function(info, tab) {
 
-    if (info.menuItemId === 'bt2mag') {
+    if (info.menuItemId === 'btmagd') {
         var openUrl = appUrl + '#/' + encodeURIComponent(info.selectionText);
         if (appTabId !== null) {
             chrome.tabs.update(appTabId, {
@@ -36,7 +36,7 @@ chrome.tabs.onRemoved.addListener(function(tabId) {
 });
 
 chrome.contextMenus.create({
-    "title": "使用bt2mag搜索 \"%s\"",
+    "title": "使用btmagd搜索 \"%s\"",
     "contexts": ["selection"],
-    "id": "bt2mag"
+    "id": "btmagd"
 });
