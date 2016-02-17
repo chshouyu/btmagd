@@ -16,7 +16,7 @@
     },
     "permissions": [
         "tabs",
-        "*://*.bt2mag.com/*",
+        "*://*.btaia.com/*",
         "contextMenus"
     ],
     "author": "chshouyu"
