@@ -27,13 +27,13 @@ class Search extends Component {
         if (prevId !== nowId || prevPage !== nowPage) {
             doSearch(nowId, nowPage);
             keywordField.setValue(nowId);
-            document.title = `BT2MAG-${nowId}`;
+            document.title = `BTMAGD-${nowId}`;
         }
     }
 
     componentDidMount () {
         const { doSearch, params: { id, page } } = this.props;
-        document.title = `BT2MAG-${id}`;
+        document.title = `BTMAGD-${id}`;
         id && doSearch(id, page);
     }
 
