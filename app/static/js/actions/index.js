@@ -74,7 +74,7 @@ function processPager(respDocument) {
 
 export function getLuckWord() {
     return (dispatch, getState) => {
-        return fetch(`http://www.bt2mag.com/search`).then(function(resp) {
+        return fetch(`http://www.btaia.com/search`).then(function(resp) {
             let word = processWordDocument(resp);
             dispatch(luckWord(word));
             return word;
@@ -87,7 +87,7 @@ export function doSearch(keyword, page = 1) {
         dispatch(setLoadingStatus(true));
         dispatch(emptyList());
         dispatch(emptyMagnetLink());
-        return fetch(`http://www.bt2mag.com/search/${encodeURIComponent(keyword)}/currentPage/${page}`).then(function(resp) {
+        return fetch(`http://www.btaia.com/search/${encodeURIComponent(keyword)}/currentPage/${page}`).then(function(resp) {
             let list = processListDocument(resp);
             let pager = processPager(resp);
             dispatch(setList(list));
