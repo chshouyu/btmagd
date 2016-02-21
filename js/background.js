@@ -1,4 +1,4 @@
-var appUrl = chrome.extension.getURL('../app/index.html');
+var appUrl = chrome.extension.getURL('../app/dest/index.html');
 
 var appTabId = null;
 
