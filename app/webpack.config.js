@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var Clean = require('clean-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 
@@ -35,6 +36,16 @@ module.exports = {
         new CommonsChunkPlugin('vendor', 'vendor.js'),
         new webpack.DefinePlugin({
             DEBUG: process.env.NODE_ENV !== 'production'
+        }),
+        new HtmlWebpackPlugin({
+            template: './index.html',
+            inject: 'body',
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true,
+                removeTagWhitespace: true,
+                removeEmptyAttributes: true
+            }
         })
     ]
 };
