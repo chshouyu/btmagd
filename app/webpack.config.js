@@ -4,6 +4,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 
+var isProduction = process.env.NODE_ENV === 'production';
+
 module.exports = {
     entry: {
         index: './static/js/index',
@@ -11,8 +13,8 @@ module.exports = {
     },
     output: {
         path: './dest/',
-        filename: '[name].js',
-        chunkFilename: "[id].js",
+        filename: isProduction ? '[name].[hash:7].js' : '[name].js',
+        chunkFilename: isProduction ? '[id].[hash:7].js' : '[id].js',
         jsonpFunction: '__wpjp_'
     },
     module: {
