@@ -34,7 +34,7 @@ module.exports = {
         }]
     },
     plugins: [
-        new Clean(['dest/content.js']),
+        new Clean(['dest']),
         new CommonsChunkPlugin('vendor', 'vendor.js'),
         new webpack.DefinePlugin({
             DEBUG: process.env.NODE_ENV !== 'production'
