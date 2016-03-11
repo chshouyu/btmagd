@@ -15,7 +15,7 @@
         "persistent": false
     },
     "content_scripts": [{
-        "matches": ["http://www.avmoo.net/cn/movie/*", "http://www.javlibrary.com/cn/?v=*"],
+        "matches": ["https://www.avmoo.com/cn/movie/*", "http://www.javlibrary.com/cn/?v=*"],
         "js": ["js/content.js"]
     }],
     "permissions": [
