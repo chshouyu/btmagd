@@ -122,7 +122,7 @@ class Search extends Component {
 
     renderTimeoutError () {
         return (
-            <div className="error-msg timeout-error">请求超时，请确认<a target="_blank" href="{BASE_URL}">{BASE_URL}</a>能在您的浏览器中正常访问</div>
+            <div className="error-msg timeout-error">请求超时，请确认<a target="_blank" href={BASE_URL}>{BASE_URL}</a>能在您的浏览器中正常访问</div>
         );
     }
 
