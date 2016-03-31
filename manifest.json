@@ -16,7 +16,7 @@
     },
     "permissions": [
         "tabs",
-        "*://*.btaia.com/*",
+        "*://*.btio.pw/*",
         "contextMenus"
     ],
     "author": "chshouyu"
