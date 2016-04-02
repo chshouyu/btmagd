@@ -38,9 +38,10 @@ module.exports = {
         new Clean(['dest']),
         new CommonsChunkPlugin('vendor', 'vendor.js'),
         new webpack.DefinePlugin({
-            DEBUG: process.env.NODE_ENV !== 'production'
+            'process.env.NODE_ENV': JSON.stringify(isProduction ? 'production' : 'development'),
+            '__DEV__': !isProduction
         }),
-        new ExtractTextPlugin('[name].[contenthash:7].css'),
+        new ExtractTextPlugin(isProduction ? '[name].[contenthash:7].css' : '[name].css'),
         new HtmlWebpackPlugin({
             template: './index.html',
             inject: 'body',

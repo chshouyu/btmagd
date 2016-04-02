@@ -15,7 +15,7 @@ const middlewares = [
     thunkMiddleware
 ];
 
-if (DEBUG) {
+if (__DEV__) {
     middlewares.push(require('redux-logger')());
 }
 
