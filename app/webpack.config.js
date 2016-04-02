@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var Clean = require('clean-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 
@@ -24,7 +25,7 @@ module.exports = {
             loaders: ['babel-loader?presets[]=es2015,presets[]=react&+cacheDirectory']
         }, {
             test: /\.css$/,
-            loader: 'style-loader!css-loader'
+            loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
         }, {
             test: /\.(png|jpg|gif)$/,
             loader: 'url-loader?limit=25000'
@@ -39,6 +40,7 @@ module.exports = {
         new webpack.DefinePlugin({
             DEBUG: process.env.NODE_ENV !== 'production'
         }),
+        new ExtractTextPlugin('[name].[contenthash:7].css'),
         new HtmlWebpackPlugin({
             template: './index.html',
             inject: 'body',
