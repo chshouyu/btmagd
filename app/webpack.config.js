@@ -5,7 +5,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 
-var isProduction = process.env.NODE_ENV === 'production';
+var __PROD__ = process.env.NODE_ENV === 'production';
 
 module.exports = {
     entry: {
@@ -14,8 +14,8 @@ module.exports = {
     },
     output: {
         path: './dest/',
-        filename: isProduction ? '[name].[hash:7].js' : '[name].js',
-        chunkFilename: isProduction ? '[id].[hash:7].js' : '[id].js',
+        filename: __PROD__ ? '[name].[hash:7].js' : '[name].js',
+        chunkFilename: __PROD__ ? '[id].[hash:7].js' : '[id].js',
         jsonpFunction: '__wpjp_'
     },
     module: {
@@ -38,10 +38,10 @@ module.exports = {
         new Clean(['dest']),
         new CommonsChunkPlugin('vendor', 'vendor.js'),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(isProduction ? 'production' : 'development'),
-            '__DEV__': !isProduction
+            'process.env.NODE_ENV': JSON.stringify(__PROD__ ? 'production' : 'development'),
+            '__DEV__': !__PROD__
         }),
-        new ExtractTextPlugin(isProduction ? '[name].[contenthash:7].css' : '[name].css'),
+        new ExtractTextPlugin(__PROD__ ? '[name].[contenthash:7].css' : '[name].css'),
         new HtmlWebpackPlugin({
             template: './index.html',
             inject: 'body',
