@@ -20,8 +20,8 @@ module.exports = {
     },
     module: {
         loaders: [{
-            test: /\.(js|jsx)?$/,
-            exclude: /(node_modules|bower_components)/,
+            test: /\.js$/,
+            exclude: /node_modules/,
             loaders: ['babel?presets[]=es2015,presets[]=react&+cacheDirectory']
         }, {
             test: /\.css$/,
@@ -29,9 +29,6 @@ module.exports = {
         }, {
             test: /\.(png|jpg|gif)$/,
             loader: 'url?limit=25000'
-        }, {
-            test: /\.less$/,
-            loader: 'style!css'
         }]
     },
     plugins: [
