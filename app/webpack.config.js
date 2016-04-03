@@ -22,13 +22,13 @@ module.exports = {
         loaders: [{
             test: /\.(js|jsx)?$/,
             exclude: /(node_modules|bower_components)/,
-            loaders: ['babel-loader?presets[]=es2015,presets[]=react&+cacheDirectory']
+            loaders: ['babel?presets[]=es2015,presets[]=react&+cacheDirectory']
         }, {
             test: /\.css$/,
-            loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+            loader: ExtractTextPlugin.extract('style', 'css')
         }, {
             test: /\.(png|jpg|gif)$/,
-            loader: 'url-loader?limit=25000'
+            loader: 'url?limit=25000'
         }, {
             test: /\.less$/,
             loader: 'style!css'
