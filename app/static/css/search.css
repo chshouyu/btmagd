@@ -1,43 +1,43 @@
 
 .search-container {
-    min-width: 960px;
-    max-width: 100%;
-    margin: 40px auto 80px;
+  min-width: 960px;
+  max-width: 100%;
+  margin: 40px auto 80px;
 }
 
 .search-form {
-    width: 40%;
-    margin: 0 auto;
-    display: flex;
+  width: 40%;
+  margin: 0 auto;
+  display: flex;
 }
 
 .keyword {
-    flex: 1;
+  flex: 1;
 }
 
 .result-wrapper {
-    width: 70%;
-    min-width: 960px;
-    margin: 20px auto 0;
+  width: 70%;
+  min-width: 960px;
+  margin: 20px auto 0;
 }
 
 .result-table tbody .title em {
-    color: #FF2929;
-    font-style: normal;
+  color: #FF2929;
+  font-style: normal;
 }
 
 .no-result {
-    text-align: center;
-    font-size: 20px;
-    color: #777;
+  text-align: center;
+  font-size: 20px;
+  color: #777;
 }
 
 .error-msg {
-    text-align: center;
-    font-size: 20px;
-    color: #FF7878;
+  text-align: center;
+  font-size: 20px;
+  color: #FF7878;
 }
 
 .timeout-error a {
-    color: #53BFE4;
+  color: #53BFE4;
 }

@@ -12,28 +12,28 @@ import Search from './components/Search';
 import Home from './components/Home';
 
 const middlewares = [
-    thunkMiddleware
+  thunkMiddleware
 ];
 
 if (__DEV__) {
-    middlewares.push(require('redux-logger')());
+  middlewares.push(require('redux-logger')());
 }
 
 const store = compose(
-    applyMiddleware(...middlewares),
-    reduxReactRouter({ createHistory })
+  applyMiddleware(...middlewares),
+  reduxReactRouter({ createHistory })
 )(createStore)(rootReducer);
 
 const rootElement = document.getElementById('container');
 
 render(
-    <Provider store={store}>
-        <ReduxRouter>
-            <Route path="/" component={App}>
-                <IndexRoute component={Home} />
-                <Route path=":id(/:page)" component={Search} />
-            </Route>
-        </ReduxRouter>
-    </Provider>,
-    rootElement
+  <Provider store={store}>
+    <ReduxRouter>
+      <Route path="/" component={App}>
+        <IndexRoute component={Home} />
+        <Route path=":id(/:page)" component={Search} />
+      </Route>
+    </ReduxRouter>
+  </Provider>,
+  rootElement
 );

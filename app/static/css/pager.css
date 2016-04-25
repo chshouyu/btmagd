@@ -1,35 +1,35 @@
 .pager {
-    padding: 40px 0 0;
+  padding: 40px 0 0;
 }
 
 .pager ul {
-    display: flex;
-    padding: 0;
-    margin: 0;
-    justify-content: center;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
 }
 
 .pager ul li {
-    list-style: none;
-    margin: 0 6px;
+  list-style: none;
+  margin: 0 6px;
 }
 
 .pager ul li a {
-    display: block;
-    color: #696969;
-    width: 40px;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    text-decoration: none;
-    font-size: 20px;
+  display: block;
+  color: #696969;
+  width: 40px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  text-decoration: none;
+  font-size: 20px;
 }
 
 .pager ul li.curr a {
-    color: #00BCD4;
+  color: #00BCD4;
 }
 
 .pager ul li.prev-page a,
 .pager ul li.next-page a {
-    width: 60px;
+  width: 60px;
 }

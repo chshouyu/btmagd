@@ -1,23 +1,23 @@
 {
-    "manifest_version": 2,
-    "name": "btmagd",
-    "version": "0.2.0",
-    "description": "btmagd下载",
-    "browser_action": {
-        "default_icon": {
-            "19": "icons/icon19.png",
-            "38": "icons/icon38.png"
-        },
-        "default_title": "btmagd"
+  "manifest_version": 2,
+  "name": "btmagd",
+  "version": "0.2.0",
+  "description": "btmagd下载",
+  "browser_action": {
+    "default_icon": {
+      "19": "icons/icon19.png",
+      "38": "icons/icon38.png"
     },
-    "background": {
-        "scripts": ["js/background.js"],
-        "persistent": false
-    },
-    "permissions": [
-        "tabs",
-        "*://*.btio.pw/*",
-        "contextMenus"
-    ],
-    "author": "chshouyu"
+    "default_title": "btmagd"
+  },
+  "background": {
+    "scripts": ["js/background.js"],
+    "persistent": false
+  },
+  "permissions": [
+    "tabs",
+    "*://*.btio.pw/*",
+    "contextMenus"
+  ],
+  "author": "chshouyu"
 }
