@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 import { routerStateReducer } from 'redux-router';
 import {
-  GET_LUCK_WORD,
   SET_LIST,
   EMPTY_LIST,
   SET_LOADING_STATUS,
@@ -10,10 +9,6 @@ import {
   SET_ERROR_STATUS,
   SET_PAGER
 } from '../actions';
-
-function luckWord(state = '', action) {
-  return action.type === GET_LUCK_WORD ? action.word : state;
-}
 
 function list(state = [], action) {
   switch (action.type) {
@@ -59,7 +54,6 @@ function pager(state = [], action) {
 }
 
 const rootReducer = combineReducers({
-  luckWord,
   list,
   isLoading,
   magnetLinks,

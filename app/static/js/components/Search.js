@@ -14,7 +14,7 @@ import {
   TableRowColumn,
   TableHeaderColumn
 } from 'material-ui/lib/table';
-import { doSearch, getMagnetLink, getLuckWord } from '../actions';
+import { doSearch, getMagnetLink } from '../actions';
 import Pager from './Pager';
 import { BASE_URL } from '../config';
 import '../../css/search.css';
@@ -52,15 +52,6 @@ class Search extends Component {
     if (hasLink || isLoading) return;
     const { getMagnetLink } = this.props;
     getMagnetLink(index, link);
-  }
-
-  doGetLuckWord () {
-    const { getLuckWord, pushState } = this.props;
-    getLuckWord().then((luckWord) => {
-      if (luckWord) {
-        pushState(null, `/${luckWord}`);
-      }
-    });
   }
 
   handlePageClick (page) {
@@ -151,7 +142,6 @@ class Search extends Component {
             inputStyle={{fontSize: '20px'}}
             defaultValue={id} />
           <RaisedButton style={btnStyle} label="搜索" onClick={this.search.bind(this)} />
-          <RaisedButton style={btnStyle} label="手气不错" onClick={this.doGetLuckWord.bind(this)} />
         </div>
         <div className="result-wrapper">
           {isLoading &&
@@ -193,8 +183,7 @@ function mapDispatchToProps(dispatch) {
   return {
     pushState: bindActionCreators(pushState, dispatch),
     doSearch: bindActionCreators(doSearch, dispatch),
-    getMagnetLink: bindActionCreators(getMagnetLink, dispatch),
-    getLuckWord: bindActionCreators(getLuckWord, dispatch)
+    getMagnetLink: bindActionCreators(getMagnetLink, dispatch)
   };
 }
 
