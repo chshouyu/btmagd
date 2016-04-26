@@ -13,7 +13,7 @@ class Home extends Component {
     let keyword = this.refs.keyword.getValue().trim();
 
     const { pushState } = this.props;
-    
+
     if (keyword) {
       pushState(null, `/${keyword}`);
     }
