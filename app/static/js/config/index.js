@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://btio.pw';
+export const BASE_URL = 'https://btso.pw';
