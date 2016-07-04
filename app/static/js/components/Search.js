@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
-import RaisedButton from 'material-ui/lib/raised-button';
-import FlatButton from 'material-ui/lib/flat-button';
-import TextField from 'material-ui/lib/text-field';
-import CircularProgress from 'material-ui/lib/circular-progress';
+import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
+import TextField from 'material-ui/TextField';
+import CircularProgress from 'material-ui/CircularProgress';
 import {
   Table,
   TableRow,
@@ -13,7 +13,7 @@ import {
   TableHeader,
   TableRowColumn,
   TableHeaderColumn
-} from 'material-ui/lib/table';
+} from 'material-ui/Table';
 import { doSearch, getMagnetLink } from '../actions';
 import Pager from './Pager';
 import { BASE_URL } from '../config';

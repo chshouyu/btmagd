@@ -6,10 +6,16 @@ import { Provider } from 'react-redux';
 import { ReduxRouter, reduxReactRouter } from 'redux-router';
 import { Route, IndexRoute } from 'react-router';
 import createHistory from 'history/lib/createHashHistory';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import rootReducer from './reducers';
 import App from './components/App';
 import Search from './components/Search';
 import Home from './components/Home';
+
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+injectTapEventPlugin();
 
 const middlewares = [
   thunkMiddleware
@@ -28,12 +34,14 @@ const rootElement = document.getElementById('container');
 
 render(
   <Provider store={store}>
-    <ReduxRouter>
-      <Route path="/" component={App}>
-        <IndexRoute component={Home} />
-        <Route path=":id(/:page)" component={Search} />
-      </Route>
-    </ReduxRouter>
+    <MuiThemeProvider muiTheme={getMuiTheme()}>
+      <ReduxRouter>
+        <Route path="/" component={App}>
+          <IndexRoute component={Home} />
+          <Route path=":id(/:page)" component={Search} />
+        </Route>
+      </ReduxRouter>
+    </MuiThemeProvider>
   </Provider>,
   rootElement
 );
